@@ -5,7 +5,7 @@ require 'highline/import'
 module Give
   class CLI < Thor
 
-    desc "setup USER REPO", "Forks the project from the specified user/repo"
+    desc "setup OWNER PROJECT", "Forks the project from the specified user/repo"
     def setup(owner, project)
       Give::Project.new(owner, project).fork
     end
@@ -20,7 +20,7 @@ module Give
       Give::Repo.new(:branch => branch).update
     end
 
-    desc "finish USER REPO BRANCH", "Pushes up your working branch, then submits a pull request."
+    desc "finish OWNER PROJECT BRANCH", "Pushes up your working branch, then submits a pull request."
     def finish(owner, project, branch)
       local_repo = Give::Repo.new(:branch => branch)
       local_repo.push
@@ -83,6 +83,7 @@ module Give
   end
 
   class User
+    include Commands
     attr_accessor :login, :token, :endpoint
     def initialize(endpoint=github)
       @login, @token, @endpoint = github_login, github_token, endpoint
@@ -102,11 +103,11 @@ module Give
     end
 
     def github_login
-     `git config --get-all github.user`.chomp
+     git('config --get-all github.user')
     end
 
     def github_token
-      `git config --get-all github.token`.chomp
+      git('config --get-all github.token')
     end
 
   end

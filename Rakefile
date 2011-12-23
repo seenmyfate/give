@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "give"
   gem.homepage = "http://github.com/seenmyfate/give"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Makes contributing to open source projects on Github just that bit easier}
+  gem.description = %Q{The aim of Give is to make contributing to open source projects on Github just that bit easier, by wrapping some simple commands around a common workflow.}
   gem.email = "seenmyfate@gmail.com"
   gem.authors = ["seenmyfate"]
   # dependencies defined in Gemfile
