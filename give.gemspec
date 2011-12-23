@@ -28,9 +28,11 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "bin/give",
+    "give.gemspec",
     "lib/commands.rb",
     "lib/give.rb",
     "spec/give_spec.rb",
+    "spec/reek_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/seenmyfate/give"
