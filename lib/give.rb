@@ -1,8 +1,21 @@
+#
+# Give
+#
+# The aim of Give is to make contributing to open source projects on Github just that bit easier,
+# by wrapping some simple commands around a common workflow.
+#
+##
 require 'commands'
 require 'thor'
 require 'octokit'
 require 'highline/import'
 module Give
+  #
+  # Give::CLI
+  #
+  # Command line interface provides the 4 commands,
+  # setup, start, update and finish
+  #
   class CLI < Thor
 
     desc "setup OWNER PROJECT", "Forks the project from the specified user/repo"
@@ -29,6 +42,11 @@ module Give
 
   end
 
+  #
+  # Give::Project
+  # 
+  # Wraps a remote repository
+  #
   class Project
     include Commands
     attr_accessor :target_branch, :reference, :client, :user, :owner, :title
@@ -82,6 +100,13 @@ module Give
 
   end
 
+  #
+  # Give::User
+  #
+  # Essentially a github user,
+  # relies on username and token existing in gitconfig
+  # http://help.github.com/set-your-user-name-email-and-github-token/
+  #
   class User
     include Commands
     attr_accessor :login, :token, :endpoint
@@ -91,10 +116,10 @@ module Give
     end
 
     def configure
-      Octokit.configure do |c|
-        c.login = login
-        c.token = token
-        c.endpoint = endpoint
+      Octokit.configure do |conf|
+        conf.login = login
+        conf.token = token
+        conf.endpoint = endpoint
       end
     end
 
@@ -112,6 +137,12 @@ module Give
 
   end
 
+  #
+  # Give::Repo
+  # 
+  # The local repository
+  #
+  #
   class Repo
     include Commands
     attr_accessor :branch
