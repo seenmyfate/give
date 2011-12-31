@@ -1,6 +1,6 @@
 ## give
 --------------
-The aim of Give is to make contributing to open source projects on Github just that bit easier, by wrapping some simple commands around a common workflow.
+give makes contributing to open source projects on Github just a little easier, by wrapping some simple commands around a common workflow.
 
 ### Installation
 
@@ -30,16 +30,20 @@ When the work is complete, push up the branch and send a pull request with `give
 
 You will be prompted to enter a title and body for the pull request.
 
+### Roadmap
+Any help with the following would be appreciated, but I'd also love to hear
+any ideas about improving this project.
+
+* Windows support
+* Twitter integration
+* Remove dependency on Octokit
 
 ### Contributing to give
 -----------------------------------
 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Try using give as outlined above, this will help to identify possible
+  workflow improvements
+* Be sure to run the tests, and test against 1.8 and 1.9
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 #### Copyright

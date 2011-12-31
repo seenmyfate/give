@@ -1,7 +1,7 @@
 #
 # Give
 #
-# The aim of Give is to make contributing to open source projects on Github just that bit easier,
+# give makes contributing to open source projects on Github just a little easier,
 # by wrapping some simple commands around a common workflow.
 #
 ##

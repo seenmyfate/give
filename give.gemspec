@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "give"
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["seenmyfate"]
-  s.date = "2011-12-23"
+  s.date = "2011-12-31"
   s.description = "The aim of Give is to make contributing to open source projects on Github just that bit easier, by wrapping some simple commands around a common workflow."
   s.email = "seenmyfate@gmail.com"
   s.executables = ["give"]
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     ".rvmrc",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
