@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe Give::CLI do
-  let(:owner)   { 'seenmyfate' }
+  let(:owner)   { 'github_user' }
   let(:project)   { 'give' }
   let(:branch) { 'feaature/my_awesome_feature' }
   let(:give)   { Give::CLI.new }
@@ -46,18 +46,20 @@ describe Give::CLI do
 end
 
 describe Give::Project do
-  let(:owner)    { 'seenmyfate' }
+  let(:owner)    { 'github_owner' }
   let(:title)    { 'give' }
-  let(:reference) { 'seenmyfate/give' }
+  let(:github_login) { 'github_user' }
+  let(:reference) { 'github_owner/give' }
   let(:request_title) { 'awesome feature' }
   let(:request_body) { 'is awesome' } 
   subject { Give::Project.new(owner, title) }
     
   before do
+    Give::User.any_instance.stub(:github_login).and_return github_login
     Give::Project.any_instance.stub(:request_body).and_return request_body
     Give::Project.any_instance.stub(:request_title).and_return request_title
   end
-  
+
   context "#new" do
 
     it "should have an owner" do
@@ -90,8 +92,8 @@ describe Give::Project do
   
     it "forks with octokit" do
       subject.client.should_receive(:fork!).with(subject.reference) 
-      subject.should_receive(:git).with('clone git@github.com:seenmyfate/give.git')
-      subject.should_receive(:sh).with('cd give;git remote add upstream git://github.com/seenmyfate/give.git')
+      subject.should_receive(:git).with('clone git@github.com:github_user/give.git')
+      subject.should_receive(:sh).with('cd give;git remote add upstream git://github.com/github_owner/give.git')
       subject.fork
     end
   end
@@ -100,7 +102,7 @@ describe Give::Project do
     let(:local_repo) { stub(:branch => 'my_awesome_feature') }
     let(:title) { 'title' }
     let(:body) { 'body' }
-    let(:local_ref) { 'seenmyfate:my_awesome_feature' }
+    let(:local_ref) { 'github_user:my_awesome_feature' }
     let(:target_branch) { 'master' }
 
     before do
