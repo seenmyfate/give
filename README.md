@@ -16,7 +16,7 @@ First up, fork the project and check out your new copy of the repo with the `giv
 
 	give setup seenmyfate give
 	
-Next, create a feature branch to work in.
+Next `cd` into your newly created git repo, and create a feature branch to work in.
 
 	give start feature/my_awesome_feature
 
