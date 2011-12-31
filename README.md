@@ -10,7 +10,7 @@ You must have set your git username and api token, if you not please follow [the
 
 ### Usage
 
-You will need the name of the GitHub user, and the repository name for the project in question.  In this example we'll the give gem itself.
+You will need the name of the GitHub user, and the repository name for the project in question.  In this example we'll use the give gem itself.
 
 First up, fork the project and check out your new copy of the repo with the `give setup` command.
 
