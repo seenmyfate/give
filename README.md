@@ -24,6 +24,11 @@ Commit away as usual, but be sure to keep your feature branch up to date with an
 
 	give update feature/my_awesome_feature
 
+Give assumes you will be contributing to the 'master' branch of the project you have forked.  If this is not case, add the name of the branch as a second argument when updating
+
+  give update feature/my_awesome_feature develop
+
+
 When the work is complete, push up the branch and send a pull request with `give finish`
 
 	give finish seenmyfate give feature/my_awesome_feature

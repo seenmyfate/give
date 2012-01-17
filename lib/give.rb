@@ -28,9 +28,10 @@ module Give
       Give::Repo.new(:branch => branch).checkout_branch
     end
 
-    desc "update BRANCH", "Updates your master branch with upstream changes, then rebases your working branch"
-    def update(branch)
-      Give::Repo.new(:branch => branch).update
+    desc "update BRANCH [UPSTREAM_BRANCH]", "Updates your master branch with upstream changes, then rebases your working branch.  Specify an upstream branch if you are using anything other than master"
+    def update(branch,upstream_branch=:master)
+      Give::Repo.new(:branch => branch,
+                     :upstream_branch => upstream_branch).update
     end
 
     desc "finish OWNER PROJECT BRANCH", "Pushes up your working branch, then submits a pull request."
@@ -145,9 +146,10 @@ module Give
   #
   class Repo
     include Commands
-    attr_accessor :branch
+    attr_accessor :branch, :upstream_branch
     def initialize(opts={})
-      @branch = opts.fetch(:branch, 'master')
+      @branch = opts.fetch(:branch, :master)
+      @upstream_branch = opts.fetch(:upstream_branch, :master)
     end
 
     def push
@@ -156,10 +158,10 @@ module Give
 
     def update
       git('fetch upstream')
-      git('checkout master')
-      git('pull upstream master')
+      git("checkout #{upstream_branch}")
+      git("pull upstream #{upstream_branch}")
       git("checkout #{branch}")
-      git('rebase master')
+      git("rebase #{upstream_branch}")
     end
 
     def checkout_branch

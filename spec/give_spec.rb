@@ -4,6 +4,7 @@ describe Give::CLI do
   let(:owner)   { 'github_user' }
   let(:project)   { 'give' }
   let(:branch) { 'feaature/my_awesome_feature' }
+  let(:upstream_branch) { 'upstream_branch' }
   let(:give)   { Give::CLI.new }
   let(:project)    { stub }
   let(:repo) { stub }
@@ -30,7 +31,7 @@ describe Give::CLI do
     it "updates" do
       Give::Repo.should_receive(:new).and_return(repo)
       repo.should_receive(:update)
-      subject.update(branch)
+      subject.update(branch, upstream_branch)
     end
   end
   
@@ -154,13 +155,14 @@ end
 describe Give::Repo do
 
   let(:branch) { 'feature/my_awesome_feature' }
+  let(:upstream_branch) { 'upstream_branch' }
   context "#new" do
 
     context "without a branch" do
       subject { Give::Repo.new }
 
       it "has master as the branch" do
-        subject.branch.should eq 'master'
+        subject.branch.should eq :master
       end
     end
 
@@ -171,18 +173,35 @@ describe Give::Repo do
         subject.branch.should eq branch
       end
     end
+    
+    context "with an upstream branch" do
 
+      subject { Give::Repo.new(:upstream_branch => upstream_branch) }
+
+      it "has the upstream branch" do
+        subject.upstream_branch.should eq upstream_branch
+      end
+    end
+  end
+
+  context "without an upstream branch" do
+
+    subject { Give::Repo.new(:branch => branch) }
+
+    it "has the upstream as master" do
+      subject.upstream_branch.should eq :master
+    end
   end
 
   context "#update" do
-    subject { Give::Repo.new(:branch => branch) }
+    subject { Give::Repo.new(:branch => branch, :upstream_branch => upstream_branch) }
    
     it "updates the branch" do
       subject.should_receive(:git).with('fetch upstream')
-      subject.should_receive(:git).with('checkout master') 
-      subject.should_receive(:git).with('pull upstream master') 
+      subject.should_receive(:git).with('checkout upstream_branch') 
+      subject.should_receive(:git).with('pull upstream upstream_branch') 
       subject.should_receive(:git).with("checkout #{branch}") 
-      subject.should_receive(:git).with('rebase master') 
+      subject.should_receive(:git).with('rebase upstream_branch') 
       subject.update
     end
   end
