@@ -2,6 +2,10 @@
 --------------
 give makes contributing to open source projects on Github just a little easier, by wrapping some simple commands around a common workflow.
 
+
+[![Build
+Status](https://secure.travis-ci.org/seenmyfate/give.png)](http://travis-ci.org/seenmyfate/give)
+
 ### Installation
 
 	gem install give
