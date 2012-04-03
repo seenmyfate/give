@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Give : Makes contributing to open source projects on Github just that bit easier" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Give</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/seenmyfate/give">Fork Me on GitHub</a>
+
+          <h1 id="project_title">Give</h1>
+          <h2 id="project_tagline">Makes contributing to open source projects on Github just that bit easier</h2>
+
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/seenmyfate/give/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/seenmyfate/give/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>give</h2>
+
+<hr><p>give makes contributing to open source projects on Github just a little easier, by wrapping some simple commands around a common workflow.</p>
+
+<h3>Installation</h3>
+
+<pre><code>gem install give
+</code></pre>
+
+<p>You must have set your git username and api token, if you not please follow <a href="http://help.github.com/set-your-user-name-email-and-github-token/">these instructions</a></p>
+
+<h3>Usage</h3>
+
+<p>You will need the name of the GitHub user, and the repository name for the project in question.  In this example we'll use the give gem itself.</p>
+
+<p>First up, fork the project and check out your new copy of the repo with the <code>give setup</code> command.</p>
+
+<pre><code>give setup seenmyfate give
+</code></pre>
+
+<p>Next <code>cd</code> into your newly created git repo, and create a feature branch to work in.</p>
+
+<pre><code>give start feature/my_awesome_feature
+</code></pre>
+
+<p>Commit away as usual, but be sure to keep your feature branch up to date with any new changes added to the forked repo by running <code>give update</code></p>
+
+<pre><code>give update feature/my_awesome_feature
+</code></pre>
+
+<p>Give assumes you will be contributing to the 'master' branch of the project you have forked.  If this is not case, add the name of the branch as a second argument when updating</p>
+
+<p>give update feature/my_awesome_feature develop</p>
+
+<p>When the work is complete, push up the branch and send a pull request with <code>give finish</code></p>
+
+<pre><code>give finish seenmyfate give feature/my_awesome_feature
+</code></pre>
+
+<p>You will be prompted to enter a title and body for the pull request.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Give maintained by <a href="https://github.com/seenmyfate">seenmyfate</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-26196760-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
